@@ -7,7 +7,7 @@ This repository holds the downloads and the website. **[Download the latest vers
 
 ## Installing
 
-Preview builds are not signed yet, so the first time you open Looksie your computer will ask if you are sure.
+Looksie is not signed by Apple or Microsoft yet, so the first time you open it your computer will ask if you are sure. You only do this once: updates install without asking again.
 
 **Windows:** run `Looksie-windows-setup.exe`. If SmartScreen says it protected your PC, click **More info**, then **Run anyway**.
 
@@ -19,4 +19,4 @@ If the Mac says the app is damaged, run this in Terminal, then open it again:
 
     xattr -dr com.apple.quarantine /Applications/Looksie.app
 
-After that, Looksie keeps itself up to date: it checks once a day and installs a new version when you say.
+After that, Looksie keeps itself up to date: it checks when it opens and every few hours, and installs a new version when you say.
