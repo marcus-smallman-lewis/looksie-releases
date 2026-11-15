@@ -154,7 +154,7 @@ code{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.86em;backgro
     <ul>
       <li>It talks to GitHub with your own sign-in, to read pull requests and, when you press Submit, to post your review.</li>
       <li>If you use the AI layer, the prompt goes to the AI tool installed on your computer, under your own sign-in. You can read the exact prompt before it is sent.</li>
-      <li>The parts of Looksie that touch the network are open source, so you can check this yourself.</li>
+      <li>At launch, the parts of Looksie that touch the network will be published as open source, so you can check this yourself.</li>
     </ul>
   </div>
 </section>
@@ -162,19 +162,19 @@ code{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.86em;backgro
 <section id="faq">
   <h2>Questions</h2>
   <div style="margin-top:28px;max-width:820px">
-    <details open><summary>Can Looksie miss something important, or ask the wrong question?</summary>
-      <p>Yes, and you should know exactly how before you rely on it. Looksie decides <b>where to look first</b>. It does not decide whether the code is right, and it never approves anything for you.</p>
-      <p><b>What it can miss.</b> A bug in ordinary code that no rule looks for, such as a wrong condition in a small change, can sit in a quick look. Anything outside the change is out of its sight: how the code behaves when it runs, other services, real data. It works out what a file is from its path, so an unusual project layout can be misread. Big pull requests get a limited number of decisions (3 to 12), so in a very large one some risky-looking steps wait with the quick looks. Treat quick looks as "glance at", not "skip".</p>
-      <p><b>When its questions are off.</b> Rule questions come from facts it found, such as "this package was removed" or "this workflow cannot run from here". The fact is right, but the change can still be intentional, which is why Looksie asks rather than tells. It checks the author's claims about installs and CI against the lockfile and CI results; other claims are marked "not checked" unless your AI looks at them.</p>
-      <p><b>The AI layer can be wrong too.</b> Every AI answer has to quote a real line from the change or it is thrown away, and everything it adds is marked as AI, but it can still misread a line. It only adds; it never removes what a rule found.</p>
-      <p><b>What it does not hide.</b> Every changed file is in Files, every step says why it is a decision or a quick look, and "How Looksie decides" in the app explains the rules. Generated files are set aside, not dropped.</p></details>
-    <details><summary>What does Looksie actually check?</summary><p>Without AI, its rules look for: a package removed from the lockfile that something still needs; a workflow that cannot be started; a new secret or setting someone has to provide; a migration that changes stored data; tests switched off or with checks removed; folders that always change together where only one changed (a page and its built copy, say); the few files that break a repeated edit; and claims in the description that the code or CI contradicts. It also weighs where a change is (database, server, screens, build), whether it touches sign-in, money or secrets, whether it changes code that already ran, and whether other steps build on it. It does not run your code or your tests.</p></details>
-    <details><summary>Is this another bot that comments on my pull requests?</summary><p>No. Looksie never comments by itself. It is a tool for the person doing the review, and the only thing it posts is your review, when you press Submit.</p></details>
-    <details><summary>Do I need an AI subscription?</summary><p>No. The rules, the briefing, the decisions and the review all work without AI. If you already have an AI coding tool installed, Looksie can use it to add a summary and sharper questions.</p></details>
-    <details><summary>Which hosts does it work with?</summary><p>GitHub today. Azure DevOps, GitLab and local folders are next, and they will work the same on Free and Pro.</p></details>
-    <details><summary>Windows says it does not recognise the app. Is that expected?</summary><p>For preview builds, yes: they are not code-signed yet. On Windows choose "More info" then "Run anyway". On a Mac, right-click the app and choose Open the first time.</p></details>
-    <details><summary>What if I reinstall, or change computer?</summary><p>Your licence is a key, not an install. Paste it again and Pro is back. A key works on three of your own devices at once, and you can free a slot yourself.</p></details>
-    <details><summary>Can I get my money back?</summary><p>Yes, within 14 days, no questions.</p></details>
+    <details open><summary>Can Looksie miss things?</summary>
+      <p>Yes, and here is exactly how. Looksie decides <b>where to look first</b>. It never decides the code is right, and it never approves anything for you.</p>
+      <p><b>It can miss</b> a plain bug no rule looks for, anything outside the change (how it runs, other services, real data), and an odd project layout it misreads. Big pull requests get 3 to 12 decisions, so some risky-looking bits wait in the quick looks. Glance at those; don't skip them.</p>
+      <p><b>Its questions can be off.</b> The fact it found is real, but the change may be on purpose. That's why it asks rather than tells.</p>
+      <p><b>The AI can be wrong too.</b> Every AI answer must quote a real line or it is binned, and it is always marked as AI.</p>
+      <p><b>Nothing is hidden.</b> Every file is in Files, and every step says why it is a decision or a quick look.</p></details>
+    <details><summary>What does it actually check?</summary><p>Packages dropped from the lockfile that something still needs. Workflows that can't start. New secrets or settings someone has to set. Migrations that change stored data. Tests switched off. A page changed but its built copy not. The odd file out in a big repeated edit. Claims in the description that the code or CI disagrees with. Then it weighs what's left: databases, sign-in, money, code that already ran. It doesn't run your code.</p></details>
+    <details><summary>Is this another bot that comments on my pull requests?</summary><p>Nope. Looksie never comments by itself. It only posts your review, when you press Submit.</p></details>
+    <details><summary>Do I need an AI subscription?</summary><p>No. Everything works without AI. If you already have an AI coding tool, Looksie can use it for a summary and sharper questions.</p></details>
+    <details><summary>Which hosts does it work with?</summary><p>GitHub, including company GitHub servers. Azure DevOps, GitLab and local folders are next, the same on Free and Pro.</p></details>
+    <details><summary>My computer says it doesn't recognise the app.</summary><p>Expected for now: preview builds aren't signed yet. Windows: "More info", then "Run anyway". Mac: open it once, then System Settings, Privacy &amp; Security, "Open Anyway". <a href="https://github.com/marcus-smallman-lewis/looksie-releases#installing">Step by step</a>.</p></details>
+    <details><summary>What if I reinstall, or get a new computer?</summary><p>Your licence is a key, not an install. Paste it again and you're back. It works on three of your own devices at once.</p></details>
+    <details><summary>Can I get my money back?</summary><p>Yes. Within 14 days, no questions.</p></details>
   </div>
 </section>
 
