@@ -143,7 +143,7 @@ code{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.86em;backgro
       <ul class="ticks"><li>Every public repository</li><li>The whole walkthrough</li><li>Groups of pull requests</li><li>The AI layer, with your own AI tool</li></ul></div>
     <div class="card pro"><h3>Pro</h3><p class="amount">$10 <small>a month, or $96 a year</small></p><p>For the code you are paid to review.</p>
       <ul class="ticks"><li>Everything in Free</li><li><b>Private repositories</b></li><li>Use it on 3 of your devices</li><li>14-day free trial, no card</li><li>14-day refund, no questions</li></ul>
-      <p class="offer">First 100 Approvers: 40% off the yearly plan, for life.</p></div>
+      <p class="offer" id="offer" hidden>First 100 Approvers: 40% off the yearly plan, for life.</p></div>
   </div>
 </section>
 
@@ -213,6 +213,13 @@ code{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.86em;backgro
     (sure ? "" : `<a class="btn" href="${B}${files.intel[0]}">Mac <small>Intel</small></a>`) +
     `<p class="also">${sure ? "Not your computer? " : "Not sure which Mac? Apple menu, About This Mac. "}Also for ${others.map(link).join(" and ")}.</p>`;
 })();
+// The launch offer shows only while places are left. offer.json is updated from the store every hour.
+fetch('offer.json', { cache: 'no-store' }).then(function (r) { return r.ok ? r.json() : null; }).then(function (o) {
+  if (!o || !(o.left > 0)) return;
+  var el = document.getElementById('offer');
+  if (o.left < o.max) el.textContent += ' ' + o.left + ' of ' + o.max + ' left.';
+  el.hidden = false;
+}).catch(function () {});
 </script>
 </body>
 </html>

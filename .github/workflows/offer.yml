@@ -1,0 +1,64 @@
+# Copied into the looksie-releases repository as .github/workflows/offer.yml.
+# Every hour it asks Polar how many times the launch-offer code has been used, and publishes what is left as
+# offer.json. The website and the app hide the offer when it reaches 0. The Polar token stays a secret here.
+#
+# Set up once, in looksie-releases → Settings → Secrets and variables → Actions:
+#   secret   POLAR_TOKEN        an organization access token with only the discounts:read scope
+#   variable POLAR_DISCOUNT_ID  the id of the First 100 Approvers discount
+#   variable POLAR_API          optional; https://sandbox-api.polar.sh to try it against the sandbox
+# Until both are set it does nothing.
+name: Launch offer count
+
+on:
+  schedule:
+    - cron: "17 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency: offer
+
+jobs:
+  count:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Ask Polar
+        env:
+          POLAR_TOKEN: ${{ secrets.POLAR_TOKEN }}
+          POLAR_DISCOUNT_ID: ${{ vars.POLAR_DISCOUNT_ID }}
+          POLAR_API: ${{ vars.POLAR_API }}
+        run: |
+          python3 - <<'PY'
+          import json, os, sys, urllib.request
+          token, disc = os.environ.get("POLAR_TOKEN", ""), os.environ.get("POLAR_DISCOUNT_ID", "")
+          if not token or not disc:
+              print("POLAR_TOKEN or POLAR_DISCOUNT_ID is not set yet; leaving offer.json as it is.")
+              sys.exit(0)
+          api = os.environ.get("POLAR_API") or "https://api.polar.sh"
+          req = urllib.request.Request(f"{api}/v1/discounts/{disc}", headers={"Authorization": f"Bearer {token}", "Accept": "application/json"})
+          with urllib.request.urlopen(req, timeout=30) as r:
+              d = json.load(r)
+          most = d.get("max_redemptions") or 100
+          left = max(0, most - int(d.get("redemptions_count") or 0))
+          new = {"left": left, "max": most}
+          try:
+              old = json.load(open("offer.json"))
+          except Exception:
+              old = None
+          if old == new:
+              print(f"No change: {left} of {most} left.")
+              sys.exit(0)
+          json.dump(new, open("offer.json", "w"))
+          open("offer.json", "a").write("\n")
+          print(f"Now {left} of {most} left.")
+          PY
+      - name: Publish
+        run: |
+          if git diff --quiet -- offer.json; then exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add offer.json
+          git commit -m "Launch offer: $(python3 -c 'import json;o=json.load(open("offer.json"));print(o["left"],"of",o["max"],"left")')"
+          git push
