@@ -150,7 +150,7 @@ code{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.86em;backgro
       <ul class="ticks"><li>Everything in Free</li><li><b>Private repositories</b></li><li>Use it on 3 of your devices</li><li>14-day free trial, no card</li><li>14-day refund, no questions</li></ul>
       <p class="soonh">Coming to Pro*</p>
       <ul class="ticks soon"><li><b>Ask AI about a decision:</b> talk a change through before you choose</li><li><b>Your own rules:</b> checks for the things your team cares about</li></ul>
-      <p class="offer" id="offer" hidden>First 100 Approvers: 40% off the yearly plan, for life.</p></div>
+      <p class="offer" id="offer" hidden>First 100 Approvers: 40% off the yearly plan, for life. Use code <b>APPROVERS</b> at checkout.</p></div>
   </div>
   <p class="fine">* Planned, and subject to change. You pay for what Pro does today.</p>
 </section>
@@ -223,7 +223,7 @@ code{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.86em;backgro
 fetch('offer.json', { cache: 'no-store' }).then(function (r) { return r.ok ? r.json() : null; }).then(function (o) {
   if (!o || !(o.left > 0)) return;
   var el = document.getElementById('offer');
-  if (o.left < o.max) el.textContent += ' ' + o.left + ' of ' + o.max + ' left.';
+  if (o.left < o.max) el.appendChild(document.createTextNode(' ' + o.left + ' of ' + o.max + ' left.'));
   el.hidden = false;
 }).catch(function () {});
 </script>
