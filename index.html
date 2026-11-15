@@ -49,7 +49,12 @@ h2{font-size:clamp(28px,4vw,42px);line-height:1.1;letter-spacing:-.03em;font-wei
 .catches li{background:var(--card);border-radius:16px;padding:14px 18px;box-shadow:var(--shadow);display:flex;gap:12px;align-items:flex-start}
 .tag{flex:none;font-size:12px;font-weight:600;padding:3px 10px;border-radius:999px;white-space:nowrap;margin-top:2px}
 .tag.bad{background:var(--bad-bg);color:var(--bad)}.tag.warn{background:var(--warn-bg);color:var(--warn)}
-.price{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:20px;margin-top:36px;align-items:start}
+.price{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:20px;margin-top:36px;align-items:stretch}
+.price .card{display:flex;flex-direction:column}
+.price .card .ticks{margin-bottom:18px}
+.price .card .offer{margin-top:auto}
+.cta .also{flex-basis:100%;font-size:15px;color:var(--mute)}
+.cta .also a{font-weight:500}
 .price .card.pro{box-shadow:0 0 0 2px var(--acc),var(--shadow)}
 .amount{font-size:40px;font-weight:700;letter-spacing:-.03em;line-height:1.1;margin:6px 0 4px}
 .amount small{font-size:16px;font-weight:400;color:var(--mute);letter-spacing:0}
@@ -171,5 +176,36 @@ code{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.86em;backgro
 </footer>
 
 </div>
+<script>
+// Recommends the right download. Without this, all three buttons above still work.
+(async () => {
+  const B = "https://github.com/marcus-smallman-lewis/looksie-releases/releases/latest/download/";
+  const files = { win: ["Looksie-windows-setup.exe", "Windows"], arm: ["Looksie-mac-apple-silicon.dmg", "Mac", "Apple chip"], intel: ["Looksie-mac-intel.dmg", "Mac", "Intel"] };
+  const ua = navigator.userAgent;
+  let pick = /Windows/.test(ua) ? "win" : /Macintosh/.test(ua) && !("ontouchend" in document) ? "mac" : null;
+  if (pick === "mac") {
+    // Browsers call every Mac "Intel". Chrome and Edge can say the real chip; otherwise the graphics chip gives it away.
+    try { const v = await navigator.userAgentData?.getHighEntropyValues?.(["architecture"]); if (v?.architecture === "arm") pick = "arm"; else if (v?.architecture === "x86") pick = "intel"; } catch (e) {}
+    if (pick === "mac") {
+      try {
+        const gl = document.createElement("canvas").getContext("webgl");
+        const ext = gl && gl.getExtension("WEBGL_debug_renderer_info");
+        const r = (gl && (ext ? gl.getParameter(ext.UNMASKED_RENDERER_WEBGL) : gl.getParameter(gl.RENDERER))) || "";
+        if (/Apple M\d/i.test(r)) pick = "arm"; else if (/Intel|AMD|Radeon|NVIDIA/i.test(r)) pick = "intel";
+      } catch (e) {}
+    }
+  }
+  if (!pick) return; // a phone or Linux: leave all three
+  const sure = pick !== "mac";
+  const main = pick === "mac" ? "arm" : pick;
+  const [file, os, chip] = files[main];
+  const link = (k) => `<a href="${B}${files[k][0]}">${files[k][1]}${files[k][2] ? " (" + files[k][2] + ")" : ""}</a>`;
+  const others = Object.keys(files).filter((k) => k !== main && (sure || k !== "intel"));
+  const box = document.getElementById("download");
+  box.innerHTML = `<a class="btn go" href="${B}${file}">Download for ${os}${chip ? " <small>" + chip + "</small>" : ""}</a>` +
+    (sure ? "" : `<a class="btn" href="${B}${files.intel[0]}">Mac <small>Intel</small></a>`) +
+    `<p class="also">${sure ? "Not your computer? " : "Not sure which Mac? Apple menu, About This Mac. "}Also for ${others.map(link).join(" and ")}.</p>`;
+})();
+</script>
 </body>
 </html>
