@@ -58,6 +58,10 @@ h2{font-size:clamp(28px,4vw,42px);line-height:1.1;letter-spacing:-.03em;font-wei
 .ticks.soon li:before{left:3px;top:.4em;width:10px;height:10px;border:2px dashed var(--acc);border-radius:50%;transform:none}
 .fine{font-size:13px;color:var(--mute);margin-top:14px}
 .price .card .offer{margin-top:auto}
+.price .card .buy{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.price .card .buy.end{margin-top:auto}
+.price .card .buy .btn{min-height:46px;padding:0 20px}
+.price .card .buy + .fine{margin-top:10px}
 .cta .also{flex-basis:100%;font-size:15px;color:var(--mute)}
 .cta .also a{font-weight:500}
 .price .card.pro{box-shadow:0 0 0 2px var(--acc),var(--shadow)}
@@ -98,7 +102,7 @@ code{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.86em;backgro
     <a class="btn" href="https://github.com/marcus-smallman-lewis/looksie-releases/releases/latest/download/Looksie-mac-apple-silicon.dmg">Download for Mac <small>Apple chip</small></a>
     <a class="btn" href="https://github.com/marcus-smallman-lewis/looksie-releases/releases/latest/download/Looksie-mac-intel.dmg">Mac <small>Intel</small></a>
   </div>
-  <p class="note">Free on public repositories, for good. Works with GitHub today. Preview builds are not signed yet: <a href="https://github.com/marcus-smallman-lewis/looksie-releases#installing">how to open them</a>.</p>
+  <p class="note">Free on public repositories, for good. Works with GitHub today. Not signed by Apple or Microsoft yet, so you approve it once: <a href="https://github.com/marcus-smallman-lewis/looksie-releases#installing">how</a>.</p>
   <div class="shot"><img src="img/decision.png" width="1440" height="900" alt="A Looksie decision: one question about the change, the facts behind it, and the code underneath."></div>
 </header>
 
@@ -145,12 +149,15 @@ code{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.86em;backgro
   <p class="sub">One simple line: if the repository is public, Looksie is free. Private repositories are part of Pro. Every feature and every connection is the same on both.</p>
   <div class="price">
     <div class="card"><h3>Free</h3><p class="amount">$0</p><p>For open source, and for trying it properly.</p>
-      <ul class="ticks"><li>Every public repository</li><li>The whole walkthrough</li><li>Groups of pull requests</li><li>The AI layer, with your own AI tool</li></ul></div>
+      <ul class="ticks"><li>Every public repository</li><li>The whole walkthrough</li><li>Groups of pull requests</li><li>The AI layer, with your own AI tool</li></ul>
+      <div class="buy end"><a class="btn" href="#download">Download free</a></div></div>
     <div class="card pro"><h3>Pro</h3><p class="amount">$10 <small>a month, or $96 a year</small></p><p>For the code you are paid to review.</p>
       <ul class="ticks"><li>Everything in Free</li><li><b>Private repositories</b></li><li>Use it on 3 of your devices</li><li>14-day free trial, no card</li><li>14-day refund, no questions</li></ul>
       <p class="soonh">Coming to Pro*</p>
       <ul class="ticks soon"><li><b>Ask AI about a decision:</b> talk a change through before you choose</li><li><b>Your own rules:</b> checks for the things your team cares about</li></ul>
-      <p class="offer" id="offer" hidden>First 100 Approvers: 40% off the yearly plan, for life. Use code <b>APPROVERS</b> at checkout.</p></div>
+      <p class="offer" id="offer" hidden>First 100 Approvers: 40% off the yearly plan, for life. Use code <b>APPROVERS</b> at checkout.</p>
+      <div class="buy"><a class="btn go" href="https://buy.polar.sh/polar_cl_NonHyAQubtQiT2fVN4RKAN7WFb4WPPHnCmyGM2jNFZY">Buy yearly · $96</a><a class="btn" href="https://buy.polar.sh/polar_cl_YlQv8mmfOQQ45ouJLJKEi2zf5QNsQ4VArVfK54A3g4P">Monthly · $10</a></div>
+      <p class="fine">Or download it and try Pro free for 14 days first. Your licence key arrives by email; paste it into Looksie.</p></div>
   </div>
   <p class="fine">* Planned, and subject to change. You pay for what Pro does today.</p>
 </section>
@@ -178,7 +185,8 @@ code{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.86em;backgro
     <details><summary>Is this another bot that comments on my pull requests?</summary><p>Nope. Looksie never comments by itself. It only posts your review, when you press Submit.</p></details>
     <details><summary>Do I need an AI subscription?</summary><p>No. Everything works without AI. If you already use Claude Code or Codex, Looksie can use it for a summary and sharper questions.</p></details>
     <details><summary>Which hosts does it work with?</summary><p>GitHub, including GitHub Enterprise. Azure DevOps and GitLab are planned, and will be the same on Free and Pro.</p></details>
-    <details><summary>My computer says it doesn't recognise the app.</summary><p>Expected for now: preview builds aren't signed yet. Windows: "More info", then "Run anyway". Mac: open it once, then System Settings, Privacy &amp; Security, "Open Anyway". <a href="https://github.com/marcus-smallman-lewis/looksie-releases#installing">Step by step</a>.</p></details>
+    <details><summary>My computer says it doesn't recognise the app.</summary><p>Looksie isn't signed by Apple or Microsoft yet, so your computer asks once. Windows: "More info", then "Run anyway". Mac: open it once, then System Settings, Privacy &amp; Security, "Open Anyway". Updates install without asking again. <a href="https://github.com/marcus-smallman-lewis/looksie-releases#installing">Step by step</a>.</p></details>
+    <details><summary>How does buying work?</summary><p>Buy here or from Looksie's plan screen. Our payment partner, Polar, emails your licence key; paste it into Looksie and Pro switches on. Change or cancel your plan any time in <a href="https://polar.sh/looksie/portal">Polar's customer portal</a>.</p></details>
     <details><summary>What if I reinstall, or get a new computer?</summary><p>Your licence is a key, not an install. Paste it again and you're back. It works on three of your own devices at once.</p></details>
     <details><summary>Can I get my money back?</summary><p>Yes. Within 14 days, no questions.</p></details>
   </div>
