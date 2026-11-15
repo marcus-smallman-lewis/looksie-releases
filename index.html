@@ -52,6 +52,11 @@ h2{font-size:clamp(28px,4vw,42px);line-height:1.1;letter-spacing:-.03em;font-wei
 .price{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:20px;margin-top:36px;align-items:stretch}
 .price .card{display:flex;flex-direction:column}
 .price .card .ticks{margin-bottom:18px}
+.soonh{margin-top:4px;font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--mute)}
+.ticks.soon{margin-top:10px}
+.ticks.soon li{color:var(--mute)}
+.ticks.soon li:before{left:3px;top:.4em;width:10px;height:10px;border:2px dashed var(--acc);border-radius:50%;transform:none}
+.fine{font-size:13px;color:var(--mute);margin-top:14px}
 .price .card .offer{margin-top:auto}
 .cta .also{flex-basis:100%;font-size:15px;color:var(--mute)}
 .cta .also a{font-weight:500}
@@ -143,8 +148,11 @@ code{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.86em;backgro
       <ul class="ticks"><li>Every public repository</li><li>The whole walkthrough</li><li>Groups of pull requests</li><li>The AI layer, with your own AI tool</li></ul></div>
     <div class="card pro"><h3>Pro</h3><p class="amount">$10 <small>a month, or $96 a year</small></p><p>For the code you are paid to review.</p>
       <ul class="ticks"><li>Everything in Free</li><li><b>Private repositories</b></li><li>Use it on 3 of your devices</li><li>14-day free trial, no card</li><li>14-day refund, no questions</li></ul>
+      <p class="soonh">Coming to Pro*</p>
+      <ul class="ticks soon"><li><b>Ask AI about a decision:</b> talk a change through before you choose</li><li><b>Your own rules:</b> checks for the things your team cares about</li></ul>
       <p class="offer" id="offer" hidden>First 100 Approvers: 40% off the yearly plan, for life.</p></div>
   </div>
+  <p class="fine">* Planned, and subject to change. You pay for what Pro does today.</p>
 </section>
 
 <section id="privacy">
