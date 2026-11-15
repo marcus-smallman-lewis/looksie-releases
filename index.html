@@ -171,11 +171,9 @@ code{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.86em;backgro
   <h2>Questions</h2>
   <div style="margin-top:28px;max-width:820px">
     <details open><summary>Can Looksie miss things?</summary>
-      <p>Yes, and here is exactly how. Looksie decides <b>where to look first</b>. It never decides the code is right, and it never approves anything for you.</p>
-      <p><b>It can miss</b> a plain bug no rule looks for, anything outside the change (how it runs, other services, real data), and an odd project layout it misreads. Big pull requests get 3 to 12 decisions, so some risky-looking bits wait in the quick looks. Glance at those; don't skip them.</p>
-      <p><b>Its questions can be off.</b> The fact it found is real, but the change may be on purpose. That's why it asks rather than tells.</p>
-      <p><b>The AI can be wrong too.</b> Every AI answer must quote a real line or it is binned, and it is always marked as AI.</p>
-      <p><b>Nothing is hidden.</b> Every file is in Files, and every step says why it is a decision or a quick look.</p></details>
+      <p>Yes. Looksie decides <b>where to look first</b>. It never says the code is right, and never approves for you.</p>
+      <p>On a big pull request, the riskiest parts come first as decisions. Everything else is still there as quick looks, each saying why. Glance over them; don't skip them.</p>
+      <p>It can miss a bug no rule looks for, or anything outside the change, like real data. AI answers can be wrong too, so each must quote a real line and is marked as AI.</p></details>
     <details><summary>What does it actually check?</summary><p>Packages dropped from the lockfile that something still needs. Workflows that can't start. New secrets or settings someone has to set. Migrations that change stored data. Tests switched off. A page changed but its built copy not. The odd file out in a big repeated edit. Claims in the description that the code or CI disagrees with. Then it weighs what's left: databases, sign-in, money, code that already ran. It doesn't run your code.</p></details>
     <details><summary>Is this another bot that comments on my pull requests?</summary><p>Nope. Looksie never comments by itself. It only posts your review, when you press Submit.</p></details>
     <details><summary>Do I need an AI subscription?</summary><p>No. Everything works without AI. If you already have an AI coding tool, Looksie can use it for a summary and sharper questions.</p></details>
