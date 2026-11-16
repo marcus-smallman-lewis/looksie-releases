@@ -52,7 +52,7 @@ footer{color:var(--mute);font-size:15px;padding:0 0 48px;text-align:center}
 </nav>
 <main class="doc">
 <h1>Privacy</h1>
-<p class="meta">Last updated 15 November 2026</p>
+<p class="meta">Last updated 16 November 2026</p>
 <div class="short"><b>The short version</b>
 <ul>
 <li>Looksie has no accounts, no analytics and no tracking. It does not send your code, or anything about you, to us.</li>
@@ -75,7 +75,7 @@ footer{color:var(--mute);font-size:15px;padding:0 0 48px;text-align:center}
 <h2>What leaves your computer, and where it goes</h2>
 <ul>
 <li><b>GitHub</b> (or your company's GitHub server). Looksie reads the pull requests you open, and posts a review only when you press Submit and confirm. GitHub's own privacy policy covers what it does with those requests.</li>
-<li><b>AI, only if you set it up.</b> With your own Anthropic API key, Looksie sends a prompt made from the pull request (its description and the changes for the decisions) straight to Anthropic, under your own agreement with them. The key is kept in your computer's keychain and sent only to Anthropic. If you connect your own Claude Code or Codex instead, your agent asks Looksie for the same prompt and sends it to its own provider under your account; Looksie only stores the answer on your computer. You can read the prompt in the app first. Without either, nothing goes to any AI service.</li>
+<li><b>AI, only if you set it up.</b> With your own Anthropic or OpenAI API key, Looksie sends a prompt made from the pull request (its description and the changes for the decisions) straight to that company, under your own agreement with them. Each key is kept in your computer's keychain and sent only to its own company. Requests to OpenAI ask it not to store the response for later retrieval; each company's own policies cover what they keep. If you connect your own Claude Code or Codex instead, your agent asks Looksie for the same prompt and sends it to its own provider under your account; Looksie only stores the answer on your computer. You can read the prompt in the app first. Without either, nothing goes to any AI service.</li>
 <li><b>Update checks.</b> When it opens, and every few hours while it is open, Looksie asks GitHub whether a newer version exists, by reading a public file from our releases page. Nothing about you is sent, though GitHub sees the request come from your internet address, as with any web page.</li>
 <li><b>Launch offer.</b> On the plan screen, Looksie reads how many launch-offer places are left from looksie.dev. Nothing about you is sent.</li>
 <li><b>Licence checks (Pro only).</b> About once a week, Looksie checks your licence key with Polar, our payment partner, so refunds and cancellations take effect. When you first paste the key, it also sends the computer's name and system (for example "MARCUSPC (Windows)"), so you can tell your devices apart in Polar's portal; a key works on up to three.</li>

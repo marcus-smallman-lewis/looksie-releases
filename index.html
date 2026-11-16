@@ -138,7 +138,7 @@ code{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.86em;backgro
   <div class="grid">
     <div class="card"><h3>A sensible number of decisions</h3><p>A 2,000-line pull request comes out as about nine decisions. A sweep across a thousand files that all got the same edit is one quick look, plus the few that did not follow the pattern.</p></div>
     <div class="card"><h3>Several pull requests as one review</h3><p>When pull requests point at the same issue or at each other, Looksie suggests reviewing them together, shows how they connect, and says which to merge first. You can also group them yourself.</p></div>
-    <div class="card"><h3>Works without AI. Better with yours.</h3><p>Everything above is rules and facts. Add your own Anthropic API key, or let your own Claude Code or Codex do it, for a plain-English summary and a sharper question per decision. Every answer has to quote a real line from the change, or it is thrown away.</p></div>
+    <div class="card"><h3>Works without AI. Better with yours.</h3><p>Everything above is rules and facts. Add your own Anthropic or OpenAI API key, or let your own Claude Code or Codex do it, for a plain-English summary and a sharper question per decision. Every answer has to quote a real line from the change, or it is thrown away.</p></div>
     <div class="card"><h3>The whole picture when you want it</h3><p>A map of how the steps depend on each other, and every changed file with a link straight to the decision that asks about it.</p></div>
   </div>
   <div class="shot"><img src="img/map.png" width="1440" height="900" loading="lazy" alt="The map: steps laid out from data to tests, one band per repository, with the connections between them."></div>
@@ -168,7 +168,7 @@ code{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.86em;backgro
     <p>Looksie runs on your computer. There are no Looksie servers and no accounts, and it collects nothing about you.</p>
     <ul>
       <li>It talks to GitHub with your own sign-in, to read pull requests and, when you press Submit, to post your review.</li>
-      <li>If you use the AI layer, the prompt goes straight to Anthropic with your own API key, or to your own Claude Code or Codex when it asks Looksie. You can read the exact prompt first.</li>
+      <li>If you use the AI layer, the prompt goes straight to Anthropic or OpenAI with your own API key, or to your own Claude Code or Codex when it asks Looksie. You can read the exact prompt first.</li>
       <li>At launch, the parts of Looksie that touch the network will be published as open source, so you can check this yourself.</li>
     </ul>
   </div>
@@ -183,7 +183,7 @@ code{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.86em;backgro
       <p>It can miss a bug no rule looks for, or anything outside the change, like real data. AI answers can be wrong too, so each must quote a real line and is marked as AI.</p></details>
     <details><summary>What does it actually check?</summary><p>Packages dropped from the lockfile that something still needs. Workflows that can't start. New secrets or settings someone has to set. Migrations that change stored data. Tests switched off. A page changed but its built copy not. The odd file out in a big repeated edit. Claims in the description that the code or CI disagrees with. Then it weighs the rest: databases, sign-in, money, and edits to existing code. It never runs your code.</p></details>
     <details><summary>Is this another bot that comments on my pull requests?</summary><p>Nope. Looksie never comments by itself. It only posts your review, when you press Submit.</p></details>
-    <details><summary>Do I need AI?</summary><p>No. Everything works without it. For a summary and sharper questions, add your own Anthropic API key (usually a few cents a review), or connect your own Claude Code or Codex: your agent does the work on your plan and its answer appears in Looksie.</p></details>
+    <details><summary>Do I need AI?</summary><p>No. Everything works without it. For a summary and sharper questions, add your own Anthropic or OpenAI API key (usually a few cents a review), or connect your own Claude Code or Codex: your agent does the work on your plan and its answer appears in Looksie.</p></details>
     <details><summary>Which hosts does it work with?</summary><p>GitHub, including GitHub Enterprise. Azure DevOps and GitLab are planned, and will be the same on Free and Pro.</p></details>
     <details><summary>My computer says it doesn't recognise the app.</summary><p>Looksie isn't signed by Apple or Microsoft yet, so your computer asks once. Windows: "More info", then "Run anyway". Mac: open it once, then System Settings, Privacy &amp; Security, "Open Anyway". Updates install without asking again. <a href="https://github.com/marcus-smallman-lewis/looksie-releases#installing">Step by step</a>.</p></details>
     <details><summary>How does buying work?</summary><p>Buy here or from Looksie's plan screen. Our payment partner, Polar, emails your licence key; paste it into Looksie and Pro switches on. Change or cancel your plan any time in <a href="https://polar.sh/looksie/portal">Polar's customer portal</a>.</p></details>
