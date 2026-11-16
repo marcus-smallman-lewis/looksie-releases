@@ -31,15 +31,20 @@ jobs:
           POLAR_API: ${{ vars.POLAR_API }}
         run: |
           python3 - <<'PY'
-          import json, os, sys, urllib.request
+          import json, os, sys, urllib.error, urllib.request
           token, disc = os.environ.get("POLAR_TOKEN", ""), os.environ.get("POLAR_DISCOUNT_ID", "")
           if not token or not disc:
               print("POLAR_TOKEN or POLAR_DISCOUNT_ID is not set yet; leaving offer.json as it is.")
               sys.exit(0)
           api = os.environ.get("POLAR_API") or "https://api.polar.sh"
-          req = urllib.request.Request(f"{api}/v1/discounts/{disc}", headers={"Authorization": f"Bearer {token}", "Accept": "application/json"})
-          with urllib.request.urlopen(req, timeout=30) as r:
-              d = json.load(r)
+          req = urllib.request.Request(f"{api}/v1/discounts/{disc}", headers={"Authorization": f"Bearer {token}", "Accept": "application/json", "User-Agent": "looksie-offer-count/1.0"})
+          try:
+              with urllib.request.urlopen(req, timeout=30) as r:
+                  d = json.load(r)
+          except urllib.error.HTTPError as e:
+              # Polar's reason, never the token: 401/403 usually mean a token without discounts:read, or from the sandbox.
+              print(f"Polar said {e.code}: {e.read()[:300].decode('utf-8', 'replace')}")
+              sys.exit(1)
           most = d.get("max_redemptions") or 100
           left = max(0, most - int(d.get("redemptions_count") or 0))
           new = {"left": left, "max": most}
