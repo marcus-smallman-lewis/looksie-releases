@@ -89,7 +89,7 @@ code{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.86em;backgro
 
 <nav>
   <a class="word" href="#" aria-label="Looksie, home"><span aria-hidden="true">l</span><svg viewBox="0 0 51 26" aria-hidden="true"><circle class="ring" cx="12.6" cy="13" r="10.3"/><circle class="ring" cx="38.4" cy="13" r="10.3"/><circle class="pupil" cx="15.4" cy="14.2" r="4.3"/><circle class="pupil" cx="41.2" cy="14.2" r="4.3"/></svg><span aria-hidden="true">ksie</span></a>
-  <div class="links"><a href="#how">How it works</a><a href="#pricing">Pricing</a><a href="#privacy">Privacy</a><a href="#faq">Questions</a></div>
+  <div class="links"><a href="#how">How it works</a><a href="#pricing">Pricing</a><a href="#privacy">Privacy</a><a href="#faq">Questions</a><a href="https://github.com/marcus-smallman-lewis/looksie-open">Source</a></div>
   <a class="btn go" style="min-height:44px;padding:0 20px" href="#download">Download</a>
 </nav>
 
@@ -111,7 +111,7 @@ code{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.86em;backgro
     <div>
       <h2>Pull requests got bigger. Your day did not.</h2>
       <p class="sub">Coding agents write a lot, quickly, with a confident write-up on top. The real question gets buried: what am I actually agreeing to? Reading the diff top to bottom is slow, and another bot leaving comments just gives you more to read.</p>
-      <p class="sub">Looksie is not a bot. It is your own tool for doing the review, and it only speaks when you press Submit.</p>
+      <p class="sub">Looksie is not a bot. It is your own tool for doing the review, and it only speaks when you say so.</p>
     </div>
     <ul class="catches" aria-label="Things Looksie's rules catch">
       <li><span class="tag bad">Likely problem</span><span>The lockfile drops a package that something still needs. The description said a clean install works.</span></li>
@@ -127,21 +127,22 @@ code{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.86em;backgro
   <h2>Three screens, in the order you would want them</h2>
   <div class="grid">
     <div class="card"><div class="num">1</div><h3>The briefing</h3><p>What the change is for, in the author's words. Each claim they make is checked against the code and the CI results, and anything that needs you (a secret, a manual step) is pulled out.</p></div>
-    <div class="card"><div class="num">2</div><h3>The decisions</h3><p>The change is split into steps and read in order: data, server, screens, tests. Looksie picks the handful that need your judgement and says why. The rest is listed as quick looks, to glance at or wave through. <a href="how.html">How it decides</a>.</p></div>
-    <div class="card"><div class="num">3</div><h3>Your review</h3><p>Answer Fine, Needs changing or Question as you go, and comment on any line. At the end you see exactly what will be sent, then post one review. Nothing leaves until you press Submit.</p></div>
+    <div class="card"><div class="num">2</div><h3>The decisions</h3><p>The change is split into steps and read in order: data, server, screens, tests. Looksie picks the handful that need your judgement and says why. The rest is listed as quick looks, to glance at or wave through. <a href="how.html">How it decides</a>, and <a href="benchmarks.html">how well</a>.</p></div>
+    <div class="card"><div class="num">3</div><h3>Your review</h3><p>Answer Fine, Needs changing or Question as you go, and comment on any line. At the end you see exactly what will be sent, then post one review. Nothing is posted until you press Submit.</p></div>
   </div>
-  <div class="shot"><img src="img/briefing.png" width="1440" height="900" loading="lazy" alt="The briefing screen: what the change does, the author's claims marked as backed or contradicted, and what needs you."></div>
+  <div class="shot"><img src="img/briefing.png" width="1440" height="900" loading="lazy" alt="The briefing: what the change is for in the author's words, each claim checked against the code and CI, and what the description left out."></div>
 </section>
 
 <section>
   <h2>Built for the size of change agents produce</h2>
   <div class="grid">
-    <div class="card"><h3>A sensible number of decisions</h3><p>A 2,000-line pull request comes out as about nine decisions. A sweep across a thousand files that all got the same edit is one quick look, plus the few that did not follow the pattern.</p></div>
+    <div class="card"><h3>A sensible number of decisions</h3><p>A 2,000-line pull request gets at most about nine decisions, plus anything a rule or a sensitive area adds. A sweep that makes the same edit across a folder of files is one quick look, plus a decision about the few that did not follow the pattern.</p></div>
     <div class="card"><h3>Several pull requests as one review</h3><p>When pull requests point at the same issue or at each other, Looksie suggests reviewing them together, shows how they connect, and says which to merge first. You can also group them yourself.</p></div>
-    <div class="card"><h3>Works without AI. Better with yours.</h3><p>Everything above is rules and facts. Add your own Anthropic or OpenAI API key, or let your own Claude Code or Codex do it, for a plain-English summary and a sharper question per decision. Every answer has to quote a real line from the change, or it is thrown away.</p></div>
+    <div class="card"><h3>Works without AI. Better with yours.</h3><p>Everything above is rules and facts. Add your own Anthropic or OpenAI API key, or connect your own Claude Code or Codex, for a plain-English summary and a sharper question per decision. Every answer has to quote a real line from the change, or it is thrown away.</p></div>
+    <div class="card"><h3>Or review without leaving Claude Code</h3><p>Connect Claude Code or Codex once, then type <code>/looksie:review</code>. It picks up the pull request open in Looksie and goes through the decisions with you one at a time. To post, it shows you a preview of exactly what will be sent and waits for your yes; Claude Code also asks you to approve every post. Your answers show up in the app too.</p></div>
     <div class="card"><h3>The whole picture when you want it</h3><p>A map of how the steps depend on each other, and every changed file with a link straight to the decision that asks about it.</p></div>
   </div>
-  <div class="shot"><img src="img/map.png" width="1440" height="900" loading="lazy" alt="The map: steps laid out from data to tests, one band per repository, with the connections between them."></div>
+  <div class="shot"><img src="img/map.png" width="1440" height="900" loading="lazy" alt="The map: the review's steps left to right by layer, one row per pull request, with lines showing what builds on what."></div>
 </section>
 
 <section id="pricing">
@@ -167,7 +168,7 @@ code{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.86em;backgro
   <div class="plain">
     <p>Looksie runs on your computer. There are no Looksie servers and no accounts, and it collects nothing about you.</p>
     <ul>
-      <li>It talks to GitHub with your own sign-in, to read pull requests and, when you press Submit, to post your review.</li>
+      <li>It talks to GitHub with your own sign-in, to read pull requests and to post your review, only when you say so: Submit in the app, or yes to the preview in Claude Code or Codex.</li>
       <li>If you use the AI layer, the prompt goes straight to Anthropic or OpenAI with your own API key, or to your own Claude Code or Codex when it asks Looksie. You can read the exact prompt first.</li>
       <li>Every part of Looksie that touches your code, your tokens or the network is <a href="https://github.com/marcus-smallman-lewis/looksie-open">open source</a>, so you can check this yourself.</li>
     </ul>
@@ -182,8 +183,9 @@ code{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.86em;backgro
       <p>On a big pull request, the riskiest parts come first as decisions. Everything else is still there as quick looks, each saying why. Glance over them; don't skip them.</p>
       <p>It can miss a bug no rule looks for, or anything outside the change, like real data. AI answers can be wrong too, so each must quote a real line and is marked as AI.</p></details>
     <details><summary>What does it actually check?</summary><p>Packages dropped from the lockfile that something still needs. Workflows that can't start. New secrets or settings someone has to set. Migrations that change stored data. Tests switched off. A page changed but its built copy not. The odd file out in a big repeated edit. Claims in the description that the code or CI disagrees with. Then it weighs the rest: databases, sign-in, money, and edits to existing code. It never runs your code.</p></details>
-    <details><summary>Is this another bot that comments on my pull requests?</summary><p>Nope. Looksie never comments by itself. It only posts your review, when you press Submit.</p></details>
-    <details><summary>Do I need AI?</summary><p>No. Everything works without it. For a summary and sharper questions, add your own Anthropic or OpenAI API key (usually a few cents a review), or connect your own Claude Code or Codex in one click: your agent gets a Looksie review skill, does the work on your plan, and its answer appears in Looksie.</p></details>
+    <details><summary>Is this another bot that comments on my pull requests?</summary><p>Nope. Looksie never comments by itself. It only posts your review, only when you say so: Submit in the app, or yes to the preview in Claude Code or Codex.</p></details>
+    <details><summary>Do I need AI?</summary><p>No. Everything works without it. For a summary and sharper questions, add your own Anthropic or OpenAI API key (usually a few cents a review), or connect your own Claude Code or Codex in one click.</p></details>
+    <details><summary>Can I review inside Claude Code or Codex?</summary><p>Yes. Connect it once in Looksie (Settings, Your AI), then type <code>/looksie:review</code> in Claude Code (<code>$looksie</code> in Codex), or just ask it to review a pull request. It picks up the one open in Looksie, shows you each decision with the code that matters, and records your answers. You can ask it about the code as you go. Before anything is posted it shows you a preview of exactly what will be sent and waits for your yes, and Claude Code also asks you to approve the post. Answers made in chat show up in the app, and the other way round.</p></details>
     <details><summary>Which hosts does it work with?</summary><p>GitHub, including GitHub Enterprise. Azure DevOps and GitLab are planned, and will be the same on Free and Pro.</p></details>
     <details><summary>My computer says it doesn't recognise the app.</summary><p>Looksie isn't signed by Apple or Microsoft yet, so your computer asks once. Windows: "More info", then "Run anyway". Mac: open it once, then System Settings, Privacy &amp; Security, "Open Anyway". Updates install without asking again. <a href="https://github.com/marcus-smallman-lewis/looksie-releases#installing">Step by step</a>.</p></details>
     <details><summary>How does buying work?</summary><p>Buy here or from Looksie's plan screen. Our payment partner, Polar, emails your licence key; paste it into Looksie and Pro switches on. Change or cancel your plan any time in <a href="https://polar.sh/looksie/portal">Polar's customer portal</a>.</p></details>
@@ -193,7 +195,7 @@ code{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.86em;backgro
 </section>
 
 <footer>
-  <div class="row"><span>Looksie. Had a proper looksie.</span><span><a href="#download">Download</a> · <a href="#pricing">Pricing</a> · <a href="#privacy">Privacy</a> · <a href="how.html">How it decides</a> · <a href="privacy.html">Privacy policy</a> · <a href="terms.html">Terms</a></span></div>
+  <div class="row"><span>Looksie. Had a proper looksie.</span><span><a href="#download">Download</a> · <a href="#pricing">Pricing</a> · <a href="#privacy">Privacy</a> · <a href="how.html">How it decides</a> · <a href="benchmarks.html">Benchmarks</a> · <a href="privacy.html">Privacy policy</a> · <a href="terms.html">Terms</a> · <a href="https://github.com/marcus-smallman-lewis/looksie-open">Source code</a></span></div>
 </footer>
 
 </div>

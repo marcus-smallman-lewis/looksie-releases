@@ -47,16 +47,16 @@ footer{color:var(--mute);font-size:15px;padding:0 0 48px;text-align:center}
 <div class="wrap">
 <nav>
   <a class="word" href="index.html" aria-label="Looksie, home"><span aria-hidden="true">l</span><svg viewBox="0 0 51 26" aria-hidden="true"><circle class="ring" cx="12.6" cy="13" r="10.3"/><circle class="ring" cx="38.4" cy="13" r="10.3"/><circle class="pupil" cx="15.4" cy="14.2" r="4.3"/><circle class="pupil" cx="41.2" cy="14.2" r="4.3"/></svg><span aria-hidden="true">ksie</span></a>
-  <div class="links"><a href="index.html#how">How it works</a><a href="index.html#pricing">Pricing</a><a href="index.html#privacy">Privacy</a><a href="index.html#faq">Questions</a></div>
+  <div class="links"><a href="index.html#how">How it works</a><a href="index.html#pricing">Pricing</a><a href="index.html#privacy">Privacy</a><a href="index.html#faq">Questions</a><a href="https://github.com/marcus-smallman-lewis/looksie-open">Source</a></div>
   <a class="btn go" style="min-height:44px;padding:0 20px" href="index.html#download">Download</a>
 </nav>
 <main class="doc">
 <h1>Privacy</h1>
-<p class="meta">Last updated 16 November 2026</p>
+<p class="meta">Last updated 17 November 2026</p>
 <div class="short"><b>The short version</b>
 <ul>
 <li>Looksie has no accounts, no analytics and no tracking. It does not send your code, or anything about you, to us.</li>
-<li>It runs on your computer and talks to GitHub as you, to read pull requests and, when you press Submit, to post your review.</li>
+<li>It runs on your computer and talks to GitHub as you, to read pull requests and to post your review, only when you say so: Submit in the app, or yes to the preview in Claude Code or Codex.</li>
 <li>If you buy Pro, our payment partner Polar handles the payment and sends you your licence key.</li>
 </ul></div>
 
@@ -67,15 +67,15 @@ footer{color:var(--mute);font-size:15px;padding:0 0 48px;text-align:center}
 <p>Everything Looksie works with stays on the computer it is installed on:</p>
 <ul>
 <li><b>Sign-ins.</b> Looksie uses the GitHub CLI's own sign-in, or a token you add, which is kept in your computer's keychain (Windows Credential Manager or the macOS Keychain). It is never written to a file and never sent to us.</li>
-<li><b>Your reviews.</b> Answers, notes and draft comments, and copies of reviews it has prepared, are kept in Looksie's folders on your computer so you can pick up where you left off.</li>
+<li><b>Your reviews.</b> Answers, notes and draft comments, and copies of reviews it has prepared, are kept in Looksie's folders on your computer so you can pick up where you left off. If you connect your own Claude Code or Codex, it reads and writes the same answers there, so a review can be started in one and finished in the other. The same folder records the link of each review you posted, so it is never posted twice, and which review you have open in the app, so your agent can pick it up.</li>
 <li><b>Your licence.</b> Your licence key and plan are kept in Looksie's settings folder.</li>
 </ul>
-<p>Uninstalling Looksie and deleting its folders removes all of it. The folders are named <code>dev.looksie.app</code>, in your user's application data on Windows and in <code>~/Library/Application Support</code> and <code>~/Library/Caches</code> on a Mac.</p>
+<p>Uninstalling Looksie and deleting its folders removes all of it. If you connected Claude Code or Codex, press Disconnect in Settings, Your AI first (or remove Looksie's plugin or skill there), since those keep their own settings. The folders are named <code>dev.looksie.app</code>, in your user's application data on Windows and in <code>~/Library/Application Support</code>, <code>~/Library/Caches</code> and <code>~/Library/WebKit</code> on a Mac.</p>
 
 <h2>What leaves your computer, and where it goes</h2>
 <ul>
-<li><b>GitHub</b> (or your company's GitHub server). Looksie reads the pull requests you open, and posts a review only when you press Submit and confirm. GitHub's own privacy policy covers what it does with those requests.</li>
-<li><b>AI, only if you set it up.</b> With your own Anthropic or OpenAI API key, Looksie sends a prompt made from the pull request (its description and the changes for the decisions) straight to that company, under your own agreement with them. Each key is kept in your computer's keychain and sent only to its own company. Requests to OpenAI ask it not to store the response for later retrieval; each company's own policies cover what they keep. If you connect your own Claude Code or Codex instead, your agent asks Looksie for the same prompt and sends it to its own provider under your account; Looksie only stores the answer on your computer. You can read the prompt in the app first. Without either, nothing goes to any AI service.</li>
+<li><b>GitHub</b> (or your company's GitHub server). Looksie reads the pull requests you open, and posts a review only when you say so: Submit in the app, or yes to the preview in Claude Code or Codex. GitHub's own privacy policy covers what it does with those requests.</li>
+<li><b>AI, only if you set it up.</b> With your own Anthropic or OpenAI API key, Looksie sends a prompt made from the pull request (its description and the changes for the decisions) straight to that company, under your own agreement with them. Each key is kept in your computer's keychain and sent only to its own company. Requests to OpenAI ask it not to store the response for later retrieval; each company's own policies cover what they keep. If you review in your own Claude Code or Codex, it reads through Looksie the list of pull requests waiting on you and the review you open (its description, decisions and code changes) and sends them to Anthropic or OpenAI under your own account, as with anything else you show it. Looksie does not check what it says in chat. Looksie keeps your answers on your computer, and posts a review from your agent only after a preview. You can read the prompt in the app first. Without either, nothing goes to any AI service.</li>
 <li><b>Update checks.</b> When it opens, and every few hours while it is open, Looksie asks GitHub whether a newer version exists, by reading a public file from our releases page. Nothing about you is sent, though GitHub sees the request come from your internet address, as with any web page.</li>
 <li><b>Launch offer.</b> On the plan screen, Looksie reads how many launch-offer places are left from looksie.dev. Nothing about you is sent.</li>
 <li><b>Licence checks (Pro only).</b> About once a week, Looksie checks your licence key with Polar, our payment partner, so refunds and cancellations take effect. When you first paste the key, it also sends the computer's name and system (for example "MARCUSPC (Windows)"), so you can tell your devices apart in Polar's portal; a key works on up to three.</li>
@@ -97,7 +97,7 @@ footer{color:var(--mute);font-size:15px;padding:0 0 48px;text-align:center}
 <p>If this policy changes, the new version will be here with a new date. If a change affects what leaves your computer, the app's release notes will say so.</p>
 
 </main>
-<footer><a href="index.html">Looksie</a> · <a href="how.html">How it decides</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></footer>
+<footer><a href="index.html">Looksie</a> · <a href="how.html">How it decides</a> · <a href="benchmarks.html">Benchmarks</a> · <a href="privacy.html">Privacy policy</a> · <a href="terms.html">Terms</a> · <a href="https://github.com/marcus-smallman-lewis/looksie-open">Source code</a></footer>
 </div>
 </body>
 </html>
