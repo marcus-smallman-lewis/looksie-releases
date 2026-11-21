@@ -54,7 +54,7 @@ footer{color:var(--mute);font-size:15px;padding:0 0 48px;text-align:center}
 </nav>
 <main class="doc">
 <h1>How Looksie decides</h1>
-<p class="meta">For Looksie 1.1.0. The engine is closed source, so this page is the method in plain words.</p>
+<p class="meta">For Looksie 1.2.0. The engine is closed source, so this page is the method in plain words.</p>
 <div class="short"><b>The short version</b>
 <ul>
 <li>Looksie splits a pull request into steps, puts them in a sensible reading order, and asks a question only about the few that need your judgement. Everything else is a quick look.</li>
@@ -101,7 +101,7 @@ footer{color:var(--mute);font-size:15px;padding:0 0 48px;text-align:center}
 <h2>4. The limit, and what it never holds back</h2>
 <p>A review with 80 questions is not a review. So the number of decisions grows slowly with size:</p>
 <p class="formula">decisions ≈ 3 + 2 × log2(changed lines ÷ 200), kept between 3 and 12 per pull request; what is never held back can go past it</p>
-<p>That is about 3 for a small fix and 12 for a very big change. The strongest steps go first.</p>
+<p>That is about 3 for a small fix and 12 for a very big change. Anything never held back takes its place first. In a review of 1,000 lines or more, the other places go to the steps with the most risk for the lines you would read, rather than the highest scores, which favour big steps; on real pull requests over 5,000 lines this covered less of the change for the same share of what reviewers asked to have fixed (see <a href="benchmarks.html">benchmarks</a>).</p>
 <p><b>Never held back by the limit:</b> anything a rule found, and changes to files whose path points to sign-in, money or secrets, to stored data, or to how it builds and deploys. A big pull request gets more of these, not fewer.</p>
 <p><b>Past the limit:</b> steps that scored like decisions but came after it are marked "over the limit" and come first in the quick looks, strongest first. One click, "Make them decisions too", turns them all into decisions for that review. Nothing that scored like a decision is mixed in with the routine changes.</p>
 
